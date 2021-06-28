@@ -19,6 +19,10 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("info.codive.sample.actionspractice", appContext.packageName)
+        if (BuildConfig.DEBUG) {
+            assertEquals("info.codive.sample.actionspractice.debug", appContext.packageName)
+        } else {
+            assertEquals("info.codive.sample.actionspractice", appContext.packageName)
+        }
     }
 }
